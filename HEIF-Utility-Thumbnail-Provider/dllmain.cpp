@@ -1,32 +1,3 @@
-/****************************** Module Header ******************************\
-Module Name:  dllmain.cpp
-Project:      CppShellExtThumbnailHandler
-Copyright (c) Microsoft Corporation.
-
-The file implements DllMain, and the DllGetClassObject, DllCanUnloadNow, 
-DllRegisterServer, DllUnregisterServer functions that are necessary for a COM 
-DLL. 
-
-DllGetClassObject invokes the class factory defined in ClassFactory.h/cpp and 
-queries to the specific interface.
-
-DllCanUnloadNow checks if we can unload the component from the memory.
-
-DllRegisterServer registers the COM server and the thumbnail handler in the 
-registry by invoking the helper functions defined in Reg.h/cpp. The thumbnail 
-handler is associated with the .recipe file class.
-
-DllUnregisterServer unregisters the COM server and the thumbnail handler. 
-
-This source is subject to the Microsoft Public License.
-See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
-All other rights reserved.
-
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-\***************************************************************************/
-
 #include <windows.h>
 #include <Guiddef.h>
 #include <shlobj.h>                 // For SHChangeNotify
@@ -37,8 +8,9 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 // {4D2FBA8D-621B-4447-AF6D-5794F479C4A5}
 // When you write your own handler, you must create a new CLSID by using the 
 // "Create GUID" tool in the Tools menu, and specify the CLSID value here.
-const CLSID CLSID_RecipeThumbnailProvider = 
-{ 0x4D2FBA8D, 0x621B, 0x4447, { 0xAF, 0x6D, 0x57, 0x94, 0xF4, 0x79, 0xC4, 0xA5 } };
+// {5A60F205-6BD5-43E1-96F9-A8146050E344}
+const CLSID CLSID_HEIFThumbnailProvider = 
+{ 0x5a60f205, 0x6bd5, 0x43e1,{ 0x96, 0xf9, 0xa8, 0x14, 0x60, 0x50, 0xe3, 0x44 } };
 
 
 HINSTANCE   g_hInst     = NULL;
@@ -82,7 +54,7 @@ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, void **ppv)
 {
     HRESULT hr = CLASS_E_CLASSNOTAVAILABLE;
 
-    if (IsEqualCLSID(CLSID_RecipeThumbnailProvider, rclsid))
+    if (IsEqualCLSID(CLSID_HEIFThumbnailProvider, rclsid))
     {
         hr = E_OUTOFMEMORY;
 
@@ -129,15 +101,17 @@ STDAPI DllRegisterServer(void)
     }
 
     // Register the component.
-    hr = RegisterInprocServer(szModule, CLSID_RecipeThumbnailProvider, 
-        L"CppShellExtThumbnailHandler.RecipeThumbnailProvider Class", 
+    hr = RegisterInprocServer(szModule, CLSID_HEIFThumbnailProvider,
+        L"HEIFUtilityThumbnailProvider.HEIFThumbnailProvider Class", 
         L"Apartment");
     if (SUCCEEDED(hr))
     {
         // Register the thumbnail handler. The thumbnail handler is associated
         // with the .recipe file class.
-        hr = RegisterShellExtThumbnailHandler(L".recipe", 
-            CLSID_RecipeThumbnailProvider);
+        hr = RegisterShellExtThumbnailHandler(L".heic", 
+            CLSID_HEIFThumbnailProvider);
+		hr = RegisterShellExtThumbnailHandler(L".heif",
+			CLSID_HEIFThumbnailProvider);
         if (SUCCEEDED(hr))
         {
             // This tells the shell to invalidate the thumbnail cache. It is 
@@ -168,11 +142,12 @@ STDAPI DllUnregisterServer(void)
     }
 
     // Unregister the component.
-    hr = UnregisterInprocServer(CLSID_RecipeThumbnailProvider);
+    hr = UnregisterInprocServer(CLSID_HEIFThumbnailProvider);
     if (SUCCEEDED(hr))
     {
         // Unregister the thumbnail handler.
-        hr = UnregisterShellExtThumbnailHandler(L".recipe");
+        hr = UnregisterShellExtThumbnailHandler(L".heic");
+		hr = UnregisterShellExtThumbnailHandler(L".heif");
     }
 
     return hr;

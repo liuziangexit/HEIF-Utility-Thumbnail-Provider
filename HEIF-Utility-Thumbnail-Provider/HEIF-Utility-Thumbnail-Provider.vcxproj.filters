@@ -15,32 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ClassFactory.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RecipeThumbnailProvider.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Reg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="GlobalExportFunctions.def">
-      <Filter>源文件</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassFactory.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RecipeThumbnailProvider.h">
+    <ClInclude Include="Reg.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Reg.h">
+    <ClInclude Include="HEIFThumbnailProvider.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

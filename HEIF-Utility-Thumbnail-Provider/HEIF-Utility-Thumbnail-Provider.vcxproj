@@ -142,17 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ClassFactory.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="RecipeThumbnailProvider.cpp" />
-    <ClCompile Include="Reg.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="GlobalExportFunctions.def" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassFactory.h" />
-    <ClInclude Include="RecipeThumbnailProvider.h" />
+    <ClInclude Include="HEIFThumbnailProvider.h" />
     <ClInclude Include="Reg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
