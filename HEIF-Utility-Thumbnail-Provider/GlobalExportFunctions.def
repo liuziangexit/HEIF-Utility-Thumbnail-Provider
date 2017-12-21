@@ -1,0 +1,6 @@
+LIBRARY	"HEIF-Utility-Thumbnail-Provider"
+EXPORTS
+    DllGetClassObject   PRIVATE
+    DllCanUnloadNow     PRIVATE
+    DllRegisterServer   PRIVATE
+    DllUnregisterServer PRIVATE

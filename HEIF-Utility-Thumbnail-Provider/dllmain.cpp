@@ -108,10 +108,18 @@ STDAPI DllRegisterServer(void)
     {
         // Register the thumbnail handler. The thumbnail handler is associated
         // with the .recipe file class.
+		///*
         hr = RegisterShellExtThumbnailHandler(L".heic", 
             CLSID_HEIFThumbnailProvider);
 		hr = RegisterShellExtThumbnailHandler(L".heif",
 			CLSID_HEIFThumbnailProvider);
+		//	*/
+		/*
+		hr = RegisterShellExtThumbnailHandler(L".test1",
+			CLSID_HEIFThumbnailProvider);
+		hr = RegisterShellExtThumbnailHandler(L".test2",
+			CLSID_HEIFThumbnailProvider);
+			*/
         if (SUCCEEDED(hr))
         {
             // This tells the shell to invalidate the thumbnail cache. It is 
@@ -148,6 +156,8 @@ STDAPI DllUnregisterServer(void)
         // Unregister the thumbnail handler.
         hr = UnregisterShellExtThumbnailHandler(L".heic");
 		hr = UnregisterShellExtThumbnailHandler(L".heif");
+		//hr = UnregisterShellExtThumbnailHandler(L".test1");
+		//hr = UnregisterShellExtThumbnailHandler(L".test2");
     }
 
     return hr;
