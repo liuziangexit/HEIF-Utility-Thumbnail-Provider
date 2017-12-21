@@ -1,6 +1,8 @@
 # HEIF-Utility-Thumbnail-Provider
-ÔÚ Windows ×ÊÔ´¹ÜÀíÆ÷ÏÔÊ¾ HEIF ÎÄ¼şµÄÂÔËõÍ¼ / Show HEIF image thumbnail in Windows Explorer<br>
-<h2>½ØÍ¼ / Screen Shot</h2>
+åœ¨ Windows èµ„æºç®¡ç†å™¨æ˜¾ç¤º HEIF æ–‡ä»¶çš„ç•¥ç¼©å›¾ / Show HEIF image thumbnail in Windows Explorer<br>
+<h2>æˆªå›¾ / Screen Shot</h2>
 <img src="/img/screenshot.JPG">
-<h2>ÓÃ·¨ / Usage</h2>
-...
+<h2>ç”¨æ³• / Usage</h2>
+Coming in January 2018.<br>
+<h2>ä¸‹è½½ / Download</h2>
+Coming in January 2018.<br>
