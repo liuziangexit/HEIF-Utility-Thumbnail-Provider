@@ -3,6 +3,7 @@
 <h2>截图 / Screen Shot</h2>
 <img src="/img/screenshot.JPG">
 <h2>用法 / Usage</h2>
-Coming in January 2018.<br>
+We only provide Chinese guides, if you can not read Chinese, please contact liuziang@liuziangexit.com.<br>
+<a href="https://liuziangexit.com/HEIF-Utility/Help/No11.html">使用指南</a>
 <h2>下载 / Download</h2>
-Coming in January 2018.<br>
+<a href="https://liuziangexit.com/HEIF-Utility/download.html">https://liuziangexit.com/HEIF-Utility/download.html</a>
