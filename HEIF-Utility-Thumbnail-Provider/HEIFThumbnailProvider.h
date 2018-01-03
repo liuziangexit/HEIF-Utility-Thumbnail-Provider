@@ -130,7 +130,7 @@ public:
 
 		DLLPath = DLLPath.substr(0, DLLPath.find_last_of("\\/"));
 
-		auto TempDirectory = DC::File::read(DLLPath + "\\HUTPWriteDirectory");
+		auto TempDirectory = DC::File::read(DLLPath + "conf/HUTPWriteDirectory");
 
 		auto temp_filename = make_temp_filename(TempDirectory);
 		if (temp_filename.empty())
