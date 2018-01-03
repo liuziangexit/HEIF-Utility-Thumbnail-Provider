@@ -22,7 +22,7 @@ extern HINSTANCE g_hInst;
 extern long g_cDllRef;
 EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
-extern "C" __declspec(dllexport) void heif2jpg(const char heif_bin[], int input_buffer_size, const int jpg_quality, char output_buffer[], int output_buffer_size, const char* input_temp_filename, int* copysize, bool include_exif);
+extern "C" __declspec(dllexport) void heif2jpg(const char heif_bin[], int input_buffer_size, const int jpg_quality, char output_buffer[], int output_buffer_size, const char* input_temp_filename, int* copysize, bool include_exif, bool color_profile, const char icc_bin[], int icc_size);
 
 HBITMAP BitmapFromJpgBits(char* pData, int dataLen) {
 	HBITMAP hBitmap = NULL;
@@ -130,7 +130,7 @@ public:
 
 		DLLPath = DLLPath.substr(0, DLLPath.find_last_of("\\/"));
 
-		auto TempDirectory = DC::File::read(DLLPath + "conf/HUTPWriteDirectory");
+		auto TempDirectory = DC::File::read(DLLPath + "\\conf\\HUTPWriteDirectory");
 
 		auto temp_filename = make_temp_filename(TempDirectory);
 		if (temp_filename.empty())
@@ -147,7 +147,7 @@ public:
 
 		std::unique_ptr<char> output(reinterpret_cast<char*>(malloc(StreamStats.cbSize.QuadPart)));
 		int copysize = 0;
-		heif2jpg(streamData.get(), StreamStats.cbSize.QuadPart, 10, output.get(), StreamStats.cbSize.QuadPart, temp_filename.c_str(), &copysize, false);
+		heif2jpg(streamData.get(), StreamStats.cbSize.QuadPart, 10, output.get(), StreamStats.cbSize.QuadPart, temp_filename.c_str(), &copysize, false, false, 0, 0);
 		
 		DC::File::del(temp_filename);
 
